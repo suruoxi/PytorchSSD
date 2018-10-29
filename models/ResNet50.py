@@ -2,10 +2,8 @@ import torch
 import torch.nn as nn
 from torchvision import models
 
-#
-# ResNet50 结构
+# modules in resnet50 model
 # ['conv1', 'bn1', 'relu', 'maxpool', 'layer1', 'layer2', 'layer3', 'layer4', 'avgpool', 'fc']
-#
 
 class N_ResNet50(nn.Module):
     def __init__(self, fm_ids,pretrained = True):
@@ -26,11 +24,10 @@ class N_ResNet50(nn.Module):
         return fms
                 
 
-# 对应vgg16，两个尺寸为 64x64 , 32x32, 16x16 (1024)
-# resnet50 中为 res3b3_relu, res4b5_relu, res5c_relu. 分别为 layer2, layer3, layer4 (2048) 最后一层
+# three feature maps used in vgg backbone have receptive fields:  64x64 , 32x32, 16x16 (1024)
+# corresponding layers are res3b3_relu, res4b5_relu, res5c_relu. In pytorch version, these are output of  layer2, layer3, layer4 
 def get_resnet50_fms(fm_ids = ['layer2','layer3' ,'layer4'], pretrained=True):
     return  N_ResNet50(fm_ids,pretrained=True)
-
 
 if __name__ == "__main__":
     fms = get_resnet50_fms(pretrained=True)

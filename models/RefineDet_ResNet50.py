@@ -79,9 +79,9 @@ class RefineDet(nn.Module):
         self.size = size
         # SSD network
         #self.base =  get_vgg16_fms(fm_ids=[22,29,34], pool5=True, conv6_dilation=3)
-        self.base =  get_resnet50_fms(fm_ids=['layer2','layer3','layer4'], pretrained=True) #自动下载预训练的resnet50
+        self.base =  get_resnet50_fms(fm_ids=['layer2','layer3','layer4'], pretrained=True)
         self.use_refine = use_refine
-        # 对比caffe版，resnet版本不需要做 normalize
+        # resnet version does not need normalize
         #self.L2Norm_4_3 = L2Norm(512, 10)
         #self.L2Norm_5_3 = L2Norm(512, 8)
         self.last_layer_trans = nn.Sequential(nn.Conv2d(512, 256, kernel_size=3, stride=1, padding=1),

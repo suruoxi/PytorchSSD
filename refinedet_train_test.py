@@ -31,7 +31,7 @@ parser.add_argument('-s', '--size', default='320',
 parser.add_argument('-d', '--dataset', default='VOC',
                     help='VOC or COCO dataset')
 parser.add_argument(
-    '--basenet', default='weights/vgg16_reducedfc.pth', help='pretrained base model')
+    '--basenet', default=None, help='pretrained base model')
 #parser.add_argument(
 #    '--basenet', default='/mnt/lvmhdd1/zuoxin/ssd_pytorch_models/mb.pth', help='pretrained base model')
 parser.add_argument('--jaccard_threshold', default=0.5,
@@ -105,7 +105,7 @@ from models.RefineDet_ResNet50 import build_net
 cfg = VOC_320
 net = build_net(320, num_classes,use_refine=True)
 print(net)
-if not args.resume_net:
+if not args.resume_net and args.basenet is not None:
     net.init_model(args.basenet)
 else:
 # load resume network

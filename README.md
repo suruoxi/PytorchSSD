@@ -1,4 +1,27 @@
 # Pytorch SSD Series
+
+## ResNet50 RefineDet
+* Add models/ResNet50.py and models/RefineDet_ResNet50.py for ResNet50 backbone.
+* change "from RefineDet_vgg import build_net" to "from models.RefineDet_ResNet50 import build_net" in refinedet_train_test.py
+* Note: caffe version refinedet use 4 feature maps for detection, while this version uses only 3. (not including the one with largest receptive field)
+* other minor diffs
+
+## 基于Resnet50的RefineDet
+* 新增了models/ResNet50.py 和models/RefineDet_ResNet50.py两个文件，用于支持基于ResNet50的refinedet
+* 文件refinedet_train_test.py中的"from RefineDet_vgg import build_net"改成了"from models.RefineDet_ResNet50 import build_net"
+* 注意: caffe版本的用了4层feature map做检测，而本代码中仿照lzx1413对于VGG的设置，只用了3个feature map。 没有感受野最大的一个。
+* 其他小的不同（不影响精度）
+
+
+[official caffe version](https://github.com/sfzhang15/RefineDe)
+[官方caffe版本](https://github.com/sfzhang15/RefineDe)
+
+----------------------
+Below is the orginal README
+
+以下是原版的README
+-----------------------
+
 ## Support Arc:
 * SSD [SSD: Single Shot Multibox  Detector](https://arxiv.org/abs/1512.02325)
 * FSSD [FSSD: Feature Fusion Single Shot Multibox Detector](https://arxiv.org/abs/1712.00960)
