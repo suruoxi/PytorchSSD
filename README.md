@@ -1,4 +1,18 @@
 # Pytorch SSD Series
+
+**New features than the original version:**   
+Add ResNet50 backbone for RefineDet momdel, see [branch 0.4](https://github.com/suruoxi/PytorchSSD/tree/0.4) for details.
+
+**相比原版本的特点:**    
+新增RefineDet的ResNet50 backbone,细节见[0.4分支](https://github.com/suruoxi/PytorchSSD/tree/0.4)
+
+
+----------------------
+Below is the orginal README
+
+以下是原版的README
+-----------------------
+
 ## Pytorch 4.1 is suppoted on branch 0.4 now.
 ## Support Arc:
 * SSD [SSD: Single Shot Multibox  Detector](https://arxiv.org/abs/1512.02325)
