@@ -101,7 +101,7 @@ if args.visdom:
     import visdom
     viz = visdom.Visdom()
 
-from models.RefineDet_vgg import build_net
+from models.RefineDet_ResNet50 import build_net
 cfg = VOC_320
 net = build_net(320, num_classes,use_refine=True)
 print(net)
