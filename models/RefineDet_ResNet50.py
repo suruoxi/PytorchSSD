@@ -79,7 +79,7 @@ class RefineDet(nn.Module):
         self.size = size
         # SSD network
         #self.base =  get_vgg16_fms(fm_ids=[22,29,34], pool5=True, conv6_dilation=3)
-        self.base =  get_resnet50_fms(fm_ids=['layer2','layer3','layer4'], pretrained=True)
+        self.base =  get_resnet50_fms(fm_ids=['layer2','layer3','layer4', 'layer5'], pretrained=True)
         self.use_refine = use_refine
         # resnet version does not need normalize
         #self.L2Norm_4_3 = L2Norm(512, 10)
@@ -146,8 +146,8 @@ class RefineDet(nn.Module):
         #arm_fms[0] = self.L2Norm_4_3(arm_fms[0])
         #arm_fms[1] = self.L2Norm_5_3(arm_fms[1])
         x = arm_fms[-1]
-        x = self.extras(x)
-        arm_fms.append(x)
+        #x = self.extras(x)
+        #arm_fms.append(x)
         odm_fms = list()
         odm_fms.append(self.last_layer_trans(x))
         arm_fms.reverse()
